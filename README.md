@@ -21,15 +21,13 @@
     ```
     pip install -r requirements.txt
     ```
-
-4. Создайте и примените миграции Django:
-
-    ```
-    python manage.py makemigrations
-    python manage.py migrate
-    ```
-
-5. Запустите сервер разработки Django:
+5. Установите переменные окружения:
+   ```
+   export YANDEX_WEATHER_URL="https://api.weather.yandex.ru/v2/forecast"
+   export YANDEX_WEATHER_API_KEY="your_yandex_api_key"
+   export YANDEX_REQUEST_TIME_DELAY=your_value_in_seconds (Если требуется изменить интервал зарпосов для одного и того же города)
+   ```
+4. Запустите сервер разработки Django:
 
     ```
     python manage.py runserver
@@ -43,11 +41,35 @@
 
 ### API Endpoint:
 
-`GET /get-weather/`
+`GET /weather/`
 
 #### Параметры запроса:
 
 - `city` (обязательный): Название города, для которого требуется получить данные о погоде.
 
-#### Пример запроса:
+## Тесты
+Для запуска тестов используйте следующую команду:
+   ```
+   python manage.py test
+   ```
 
+
+# Телеграм-бот
+
+Этот небольшой бот может запрашивать API для получения погоды
+
+## Запуск
+1. Установите переменную окружения
+   ```
+   export BOT_TOKEN="your_bot_token"
+   ```
+2. Перейдите в директорию `/tg_bot` и запустите файл `main.py`:
+   ```
+   python main.py
+   ```
+   Бот будет доступен в Telegram под именем, указанным при его создании
+
+## Использование
+1. Бот будет доступен в Telegram под именем, указанным при его создании. 
+Для получения информации о погоде введите команду `/weather` с 
+названием города после неё, например `/weather Калининград`.
